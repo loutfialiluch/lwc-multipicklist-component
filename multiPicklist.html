@@ -1,0 +1,41 @@
+<template>
+  <div class="container">
+    <div class="multi-picklist">
+      <div class="multi-picklist__output" onclick={toggleMenu}>
+        {outputValue}
+        <template if:true={isOpen}>
+          <lightning-icon
+            class="chevron-icon"
+            icon-name="utility:chevrondown"
+            alternative-text="chevrondown"
+            title="chevrondown"
+            size="x-small"
+          ></lightning-icon>
+        </template>
+        <template if:false={isOpen}>
+          <lightning-icon
+            class="chevron-icon"
+            icon-name="utility:chevronup"
+            alternative-text="chevronup"
+            title="chevrondown"
+            size="x-small"
+          ></lightning-icon>
+        </template>
+      </div>
+      <template if:true={isOpen}>
+        <div class="multi-picklist__drop-down">
+          <div class="multi-picklist__drop-down--search">
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div class="multi-picklist__drop-down--selections">
+            <ul onclick={handleSelection}>
+              <template for:each={options} for:item="option">
+                <li key={option}>{option}</li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
